@@ -77,9 +77,9 @@ function App() {
           ))}
         </ul>
 
-        <h3 className="mt-4">Completed Tasks</h3>
+        <h3 className="mt-5">Completed Tasks</h3>
         {completedTasks.length === 0 ? (
-          <p>No tasks completed yet</p>
+          <p className="p">No tasks completed yet</p>
         ) : (
           <ul className="div6">
             {completedTasks.map((item) => (
