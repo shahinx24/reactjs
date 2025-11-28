@@ -14,10 +14,13 @@ function App() {
     setTask("");
   }
 
-  function deleteTask(id) {
-    const updated = tasks.filter((item) => item.id !== id);
-    setTasks(updated);
+  function deleteItem(id, type) {
+  if (type === "task") {
+    setTasks(tasks.filter((t) => t.id !== id));
+  } else if (type === "completed") {
+    setCompletedTasks(completedTasks.filter((t) => t.id !== id));
   }
+}
 
   function markDone(id) {
     const doneTask = tasks.find((item) => item.id === id);
@@ -25,11 +28,6 @@ function App() {
 
     setTasks(tasks.filter((item) => item.id !== id));
     setCompletedTasks([...completedTasks, doneTask]);
-  }
-
-  function deleteCompleted(id) {
-    const updated = completedTasks.filter((item) => item.id !== id);
-    setCompletedTasks(updated);
   }
 
   return (
@@ -66,12 +64,7 @@ function App() {
                 >
                   Done
                 </button>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => deleteTask(item.id)}
-                >
-                  Delete
-                </button>
+                <button className="btn btn-danger btn-sm" onClick={() => deleteItem(item.id, "task")}>Delete</button>
               </div>
             </li>
           ))}
@@ -87,12 +80,7 @@ function App() {
                 <span className="text-decoration-line-through">
                   {item.text}
                 </span>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => deleteCompleted(item.id)}
-                >
-                  Delete
-                </button>
+                <button className="btn btn-danger btn-sm" onClick={() => deleteItem(item.id, "completed")}>Delete</button>
               </li>
             ))}
           </ul>
