@@ -53,9 +53,9 @@ function App() {
         </div>
 
         <h3 className="mt-4">Tasks</h3>
-        <ul className="div4">
+        <ul className="ul1">
           {tasks.map((item) => (
-            <li key={item.id} className="div5">
+            <li key={item.id} className="li">
               <span>{item.text}</span>
               <div>
                 <button
@@ -74,10 +74,10 @@ function App() {
         {completedTasks.length === 0 ? (
           <p className="p">No tasks completed yet</p>
         ) : (
-          <ul className="div6">
+          <ul className="ul2">
             {completedTasks.map((item) => (
-              <li key={item.id} className="div5">
-                <span className="text-decoration-line-through">
+              <li key={item.id} className="li">
+                <span>
                   {item.text}
                 </span>
                 <button className="btn btn-danger btn-sm" onClick={() => deleteItem(item.id, "completed")}>Delete</button>
