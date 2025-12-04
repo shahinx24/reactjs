@@ -7,15 +7,15 @@ function App() {
   const toggleTheme = () => {
     setDarkTheme(prev => !prev);
   };
+  document.body.className = darkTheme ? "dark" : "light";
 
   return (
-    <div className={darkTheme ? "dark" : "light"}>
+    <>
       <h1>Theme Switcher</h1>
-
       <button onClick={toggleTheme}>
         Switch Theme
       </button>
-    </div>
+    </>
   );
 }
 export default App;
