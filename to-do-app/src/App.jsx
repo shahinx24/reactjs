@@ -6,10 +6,12 @@ function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
+  const [nextId, setNextId] = useState(1);
 
   function addTask() {
     if (task.trim() === "") return;
-    const newTask = { id: Date.now(), text: task };
+    const newTask = { id: nextId, text: task };
+    setNextId(prev => prev + 1);
     setTasks([...tasks, newTask]);
     setTask("");
   }
