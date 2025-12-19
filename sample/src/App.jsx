@@ -4,7 +4,6 @@ function App(){
         const [task,setTask] = useState([])
         const [name , setName] = useState("");
         const [age , setAge] = useState("");
-        const [show,setShow] = useState(false)
 
         function Pop(){
           setTask([name,age])
