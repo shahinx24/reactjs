@@ -6,11 +6,9 @@ function App(){
         const [age , setAge] = useState("");
         const [show,setShow] = useState(false)
 
-
         function Pop(){
           setTask([name,age])
         }
-        
         
         return(
           <div>
