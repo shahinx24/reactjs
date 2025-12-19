@@ -1,19 +1,25 @@
 import {useState} from "react";
 
 function App(){
-        const [count , counts] = useState(0);
+        // const [task,setTask] = useState([])
+        const [name , setName] = useState("");
+        const [age , setAge] = useState("");
+        const [show,setShow] = useState(false)
 
-        function increment(){
-          counts(count+1);
-        }
-        function decrement(){
-          counts(count-1);
-        }
+
+        // function Pop(){
+        //   setTask([name,age])
+        // }
+        
+        
         return(
           <div>
-          <p>count {count}</p>
-          <button onClick={increment}> + </button>
-          <button onClick={decrement}> - </button>
+            <p>Enter your Name :</p>
+          <input value={name} onChange={(t)=> setName(t.target.value)}/>
+          <p>Enter your age :</p>
+          <input value={age} onChange={(t)=> setAge(t.target.value)}/>
+          <button onClick={()=> setShow(!show)}>Click</button>
+          {show && <p>{name} {age}</p>}
           </div>
         );
 }
