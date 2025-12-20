@@ -5,10 +5,19 @@ function App() {
   const [email,setEmail] = useState("")
   const [username,setUsername] = useState("")
   const [error,setError] = useState("")
-  const [value,setValue] = useState([])
+  const [users,setusers] = useState([])
+
+useEffect(() => {
+  fetch("http://localhost:3000/users")
+    .then(res => res.json())
+    .then(data => setusers(data));
+}, []);
 
   useEffect(()=>{
-      if(email.trim() === "" && username.trim() === ""){
+      if (email === "" && username === "") {
+        setError("");
+        return;
+      }else if(email.trim() === "" || username.trim() === ""){
        setError("All fields are required");
       }else if (!email.includes("@")) {
        setError("Email must contain @");
@@ -20,6 +29,7 @@ function App() {
   function handler(){
     if (error) return;
       const newUser = { username, email };
+      console.log("Button clicked", error);
 
     // Save to JSON Server
     fetch("http://localhost:3000/users", {
@@ -29,7 +39,7 @@ function App() {
     })
       .then(res => res.json())
       .then(data => {
-        setValue(prevValues => [...prevValues, data]);
+        setusers(prev => [...prev, data]);
         setUsername("");
         setEmail("");
       });
@@ -49,7 +59,7 @@ function App() {
     <button onClick={handler}>Click</button>
     
      <h3>Stored Users</h3>
-      {value.map(user => (
+      {users.map(user => (
         <p key={user.id}>
           {user.username} - {user.email}
         </p>
