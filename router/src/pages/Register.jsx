@@ -7,7 +7,7 @@ export default function Register() {
     e.preventDefault();
     navigate("/login");
   }
-
+ 
   return (
     <>
       <h2>Registration Page</h2>
